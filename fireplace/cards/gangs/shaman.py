@@ -31,8 +31,12 @@ class CFM_313:
 	#Force Shaman class cards or else will not work for other classes
 	play = DISCOVER(RandomCollectible(card_class=CardClass.SHAMAN, overload=True))
 
-#class CFM_696:
-#	"Devolve"
+class CFM_696:
+	"Devolve"
+	def play(self):
+		for target in self.controller.opponent.field:
+			if 1 <= target.cost <= 10:
+				yield Morph(target, RandomMinion(cost=target.cost - 1))
 
 class CFM_707:
 	"Jade Lightning"

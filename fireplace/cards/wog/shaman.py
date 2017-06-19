@@ -24,6 +24,14 @@ class OG_209:
 ##
 # Spells
 
+class OG_027:
+	"Evolve"
+	def play(self):
+		for target in self.controller.field:
+			if 0 <= target.cost <= 9:
+				yield Morph(target, RandomMinion(cost=target.cost + 1))
+
+
 class OG_206:
 	"Stormcrack"
 	play = Hit(TARGET, 4)

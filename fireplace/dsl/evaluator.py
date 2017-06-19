@@ -181,3 +181,18 @@ class Lethal(Evaluator):
 			if health > amount:
 				return False
 		return True
+
+
+class ElementalPoweredUp(Evaluator):
+	"""
+	Evaluates to True if \a selector played an elemental card last turn.
+	"""
+	def __init__(self, selector):
+		super().__init__()
+		self.selector = selector
+
+	def check(self, source):
+		entities = self.selector.eval(source.game, source)
+		for entity in entities:
+			return entity.elemental_played_last_turn > 0
+		return False

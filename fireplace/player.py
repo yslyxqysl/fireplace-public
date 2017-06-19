@@ -59,6 +59,8 @@ class Player(Entity, TargetableByAuras):
 		self.weapon = None
 		self.zone = Zone.INVALID
 		self.jade_golem = 1
+		self.elemental_played_last_turn = 0
+		self.elemental_played_this_turn = 0
 
 	def __str__(self):
 		return self.name

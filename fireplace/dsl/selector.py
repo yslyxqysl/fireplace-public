@@ -128,6 +128,7 @@ DAMAGE = AttrValue(GameTag.DAMAGE)
 MANA = AttrValue(GameTag.RESOURCES)
 USED_MANA = AttrValue(GameTag.RESOURCES_USED)
 NUM_ATTACKS_THIS_TURN = AttrValue(GameTag.NUM_ATTACKS_THIS_TURN)
+NUM_ELEMENTAL_PLAYED_LAST_TURN = AttrValue(GameTag.ELEMENTAL_POWERED_UP)
 
 
 class ComparisonSelector(Selector):
@@ -392,6 +393,7 @@ HERO_POWER = EnumSelector(CardType.HERO_POWER)
 BEAST = EnumSelector(Race.BEAST)
 DEMON = EnumSelector(Race.DEMON)
 DRAGON = EnumSelector(Race.DRAGON)
+ELEMENTAL = EnumSelector(Race.ELEMENTAL)
 MECH = EnumSelector(Race.MECHANICAL)
 MURLOC = EnumSelector(Race.MURLOC)
 PIRATE = EnumSelector(Race.PIRATE)

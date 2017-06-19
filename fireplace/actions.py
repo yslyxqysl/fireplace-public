@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from inspect import isclass
-from hearthstone.enums import BlockType, CardType, CardClass, Mulligan, PlayState, Step, Zone
+from hearthstone.enums import BlockType, CardType, CardClass, Mulligan, PlayState, Step, Zone, Race
 from .dsl import LazyNum, LazyValue, Selector
 from .entity import Entity
 from .logging import log
@@ -456,6 +456,8 @@ class Play(GameAction):
 		player.cards_played_this_turn += 1
 		if card.type == CardType.MINION:
 			player.minions_played_this_turn += 1
+		if card.data.race == Race.ELEMENTAL:
+			player.elemental_played_this_turn += 1
 
 		card.target = None
 		card.choose = None

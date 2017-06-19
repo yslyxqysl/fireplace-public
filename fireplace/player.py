@@ -142,6 +142,7 @@ class Player(Entity, TargetableByAuras):
 
 	def card(self, id, source=None, parent=None, zone=Zone.SETASIDE):
 		card = Card(id)
+		self.game.manager.new_entity(card)
 		card.controller = self
 		card.zone = zone
 		card.play_counter = self.game.play_counter
@@ -150,7 +151,6 @@ class Player(Entity, TargetableByAuras):
 			card.creator = source
 		if parent is not None:
 			card.parent_card = parent
-		self.game.manager.new_entity(card)
 		return card
 
 	def prepare_for_game(self):

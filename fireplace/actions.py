@@ -1246,3 +1246,30 @@ class SummonJadeGolem(TargetedAction):
 			self.queue_broadcast(summon_action, (target, EventListener.ON, target, card))
 			self.broadcast(target, EventListener.ON, target, card)
 			self.resolve_broadcasts()
+
+class Adapt(TargetedAction):
+	"""
+	Choose a buff from three
+	"""
+	TARGET = ActionArg()
+	CARDS = CardArg()
+
+	def do(self, source, target, cards):
+		self.player = source.controller
+		self.player.choice = self
+		self.target = target
+		self.cards = cards
+		for _card in self.cards:
+			_card.type = CardType.TOKEN
+
+	def choose(self, card):
+		if card not in self.cards:
+			raise InvalidAction("%r is not a valid choice (one of %r)" % (card, self.cards))
+		log.info("%r gets adaptation: %r" % (self.target, card))
+		self.player.choice = None
+		for _card in self.cards:
+			if _card is card:
+				_card.playable_zone = Zone.SETASIDE
+				_card.play(target=self.target)
+			else:
+				_card.discard()

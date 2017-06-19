@@ -33,6 +33,7 @@ HOLDING_DRAGON = Find(FRIENDLY_HAND + DRAGON - SELF)
 ELEMENTAL_PLAYED_LAST_TURN = ElementalPoweredUp(CONTROLLER)
 
 DISCOVER = lambda *args: Discover(CONTROLLER, *args)
+ADAPT = lambda s: Adapt(s, RandomThreeAdaptations())
 
 BASIC_HERO_POWERS = [
 	"CS1h_001", "CS2_017", "CS1h_001",
@@ -53,9 +54,23 @@ POTIONS = [
 	"CFM_611"  #Bloodfury Potion
 ]
 
+ADAPTATIONS = [
+	"UNG_999t2",  #Living Spores
+	"UNG_999t3",  #Flaming Claws
+	"UNG_999t4",  #Rocky Carapace
+	"UNG_999t5",
+	"UNG_999t6",
+	"UNG_999t7",
+	"UNG_999t8",
+	"UNG_999t10",
+	"UNG_999t13",
+	"UNG_999t14"
+]
+
 RandomBasicTotem = lambda *args: RandomID("CS2_050", "CS2_051", "CS2_052", "NEW1_009")
 RandomBasicHeroPower = lambda *args: RandomID(*BASIC_HERO_POWERS)
 RandomPotion = lambda *args: RandomID(*POTIONS)
+RandomThreeAdaptations = lambda *args: RandomID(*ADAPTATIONS) * 3
 
 # 50% chance to attack the wrong enemy.
 FORGETFUL = Attack(SELF).on(COINFLIP & Retarget(SELF, RANDOM(ALL_CHARACTERS - Attack.DEFENDER - CONTROLLED_BY(SELF))))

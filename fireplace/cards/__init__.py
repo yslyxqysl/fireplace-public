@@ -101,10 +101,10 @@ class CardDB(dict):
 
 		return card
 
-	def initialize(self):
+	def initialize(self, locale="enUS"):
 		log.info("Initializing card database")
 		self.initialized = True
-		db, xml = cardxml.load()
+		db, xml = cardxml.load(locale=locale)
 		for id, card in db.items():
 			self[id] = self.merge(id, card)
 

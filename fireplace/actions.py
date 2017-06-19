@@ -1114,10 +1114,10 @@ class Summon(TargetedAction):
 			cards = [cards]
 
 		for card in cards:
-			if not card.is_summonable():
-				continue
 			if card.controller != target:
 				card.controller = target
+			if not card.is_summonable():
+				continue
 			if card.zone != Zone.PLAY:
 				if source.type == CardType.MINION and source.zone == Zone.PLAY:
 					source_index = source.controller.field.index(source)

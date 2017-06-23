@@ -1209,6 +1209,8 @@ class Steal(TargetedAction):
 
 	def do(self, source, target, controller):
 		log.info("%s takes control of %r", controller, target)
+		if len(controller.field) >= target.game.MAX_MINIONS_ON_FIELD and target.zone == Zone.PLAY:
+			return
 		zone = target.zone
 		target.zone = Zone.SETASIDE
 		target.controller = controller

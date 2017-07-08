@@ -3,8 +3,9 @@ from ..utils import *
 ##
 # Minions
 
-#class UNG_011:
-#	"Hydrologist"
+class UNG_011:
+	"Hydrologist"
+	play = DISCOVER(RandomSpell(secret=1))
 
 class UNG_015:
 	"Sunkeeper Tarim"

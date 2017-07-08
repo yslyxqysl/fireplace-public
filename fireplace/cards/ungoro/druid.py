@@ -3,8 +3,9 @@ from ..utils import *
 ##
 # Minions
 
-#class UNG_078:
-#	"Tortollan Forager"
+class UNG_078:
+	"Tortollan Forager"
+	play = Give(CONTROLLER, RandomMinion(atk=lambda x:x>=5))
 
 
 class UNG_086:

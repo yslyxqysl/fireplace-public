@@ -139,6 +139,7 @@ class CardDB(dict):
 				# cards = __builtins__["filter"](lambda c: getattr(c, attr) == value, cards)
 				cards = [
 					card for card in cards if (isinstance(value, list) and getattr(card, attr) in value) or
+					(callable(value) and value(getattr(card, attr, None))) or
 					getattr(card, attr) == value
 				]
 

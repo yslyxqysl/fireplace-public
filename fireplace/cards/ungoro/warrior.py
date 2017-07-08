@@ -39,8 +39,9 @@ class UNG_923:
 	"Iron Hide"
 	play = GainArmor(FRIENDLY_HERO, 5)
 	
-#class UNG_927:
-#	"Sudden Genesis"
+class UNG_927:
+	"Sudden Genesis"
+	play = Summon(CONTROLLER, ExactCopy(FRIENDLY_MINIONS + DAMAGED))
 	
 #class UNG_934:
 #	"Fire Plume's Heart"
